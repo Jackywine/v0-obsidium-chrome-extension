@@ -1,3 +1,12 @@
+早上给 youmind 一个提示词，让它帮我优化
+
+把提示词给 v0，然后我午睡
+
+睡醒起来就有了 Obsidium，方便你在 chromium 浏览器中安装、
+编辑 Markdown 文件
+展示一下笔记关系图
+极简，方便那些开着 Chrome 懒着开 obsidian 又想记个 Markdown 笔记的友友
+
 # Obsidium Chrome Extension
 
 *Automatically synced with your [v0.app](https://v0.app) deployments*
