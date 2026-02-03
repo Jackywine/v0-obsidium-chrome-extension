@@ -1,0 +1,203 @@
+/* Obsidium Editor Styles */
+
+/* CodeMirror Theme Override (Black & White) */
+.cm-editor {
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+}
+
+.cm-editor .cm-scroller {
+  font-family: inherit;
+  line-height: var(--line-height);
+}
+
+.cm-editor .cm-content {
+  padding: 24px;
+}
+
+.cm-editor .cm-line {
+  padding: 0 4px;
+}
+
+/* Syntax Highlighting - Black & White */
+.cm-editor .cm-header {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cm-editor .cm-header-1 { font-size: 1.5em; }
+.cm-editor .cm-header-2 { font-size: 1.3em; }
+.cm-editor .cm-header-3 { font-size: 1.1em; }
+
+.cm-editor .cm-strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cm-editor .cm-em {
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.cm-editor .cm-strikethrough {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.cm-editor .cm-link {
+  color: var(--text-secondary);
+  text-decoration: underline;
+}
+
+.cm-editor .cm-url {
+  color: var(--text-muted);
+}
+
+.cm-editor .cm-code {
+  font-family: var(--font-mono);
+  background-color: var(--bg-secondary);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+}
+
+.cm-editor .cm-quote {
+  color: var(--text-tertiary);
+  border-left: 3px solid var(--border-color);
+  padding-left: 12px;
+}
+
+.cm-editor .cm-list {
+  color: var(--text-secondary);
+}
+
+.cm-editor .cm-hr {
+  color: var(--border-color);
+}
+
+/* Wikilink Syntax */
+.cm-editor .cm-wikilink {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  border-bottom: 1px solid var(--text-muted);
+}
+
+.cm-editor .cm-wikilink-bracket {
+  color: var(--text-muted);
+}
+
+/* Tag Syntax */
+.cm-editor .cm-tag {
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* Cursor */
+.cm-editor .cm-cursor {
+  border-left-color: var(--text-primary);
+  border-left-width: 2px;
+}
+
+/* Selection */
+.cm-editor .cm-selectionBackground {
+  background-color: var(--selection-bg) !important;
+}
+
+.cm-editor.cm-focused .cm-selectionBackground {
+  background-color: var(--selection-bg) !important;
+}
+
+/* Active Line */
+.cm-editor .cm-activeLine {
+  background-color: var(--bg-secondary);
+}
+
+/* Gutter */
+.cm-editor .cm-gutters {
+  background-color: var(--bg-primary);
+  border-right: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+.cm-editor .cm-activeLineGutter {
+  background-color: var(--bg-secondary);
+}
+
+/* Placeholder */
+.cm-editor .cm-placeholder {
+  color: var(--text-muted);
+}
+
+/* Task List */
+.cm-editor .cm-task-marker {
+  cursor: pointer;
+}
+
+.cm-editor .cm-task-done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Code Block */
+.cm-editor .cm-codeblock {
+  background-color: var(--bg-secondary);
+  font-family: var(--font-mono);
+}
+
+/* Front Matter */
+.cm-editor .cm-frontmatter {
+  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+}
+
+/* Editor Textarea Fallback (when CodeMirror not loaded) */
+.editor-textarea {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: none;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+}
+
+.editor-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Auto-save indicator */
+.save-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.save-indicator.saving {
+  color: var(--text-secondary);
+}
+
+.save-indicator.saved {
+  color: var(--text-muted);
+}
+
+.save-indicator .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.save-indicator.saving .dot {
+  animation: pulse 1s ease-in-out infinite;
+}

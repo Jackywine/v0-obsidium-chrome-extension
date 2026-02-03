@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>Obsidium</title>
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/editor.css">
+  <link rel="stylesheet" href="../styles/preview.css">
+  <link rel="stylesheet" href="../styles/graph.css">
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body>
+  <div class="app-container" id="app">
+    <!-- Top Toolbar -->
+    <header class="toolbar">
+      <div class="toolbar-left">
+        <button class="btn btn-ghost btn-icon" id="toggleSidebar" aria-label="Toggle sidebar">
+          <svg class="icon" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <h1 class="app-title">Obsidium</h1>
+      </div>
+      
+      <div class="toolbar-center">
+        <div class="search-container">
+          <svg class="icon search-icon" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            class="input search-input" 
+            id="searchInput" 
+            placeholder="Search notes..."
+            aria-label="Search notes"
+          >
+        </div>
+      </div>
+      
+      <div class="toolbar-right">
+        <button class="btn btn-ghost btn-icon" id="openFolder" aria-label="Open folder" data-tooltip="Open Folder">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </button>
+        <button class="btn btn-ghost btn-icon" id="toggleGlobalGraph" aria-label="Global graph" data-tooltip="Global Graph">
+          <svg class="icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="12" y1="2" x2="12" y2="8"></line>
+            <line x1="12" y1="16" x2="12" y2="22"></line>
+            <line x1="2" y1="12" x2="8" y2="12"></line>
+            <line x1="16" y1="12" x2="22" y2="12"></line>
+          </svg>
+        </button>
+        <button class="btn btn-ghost btn-icon" id="openSettings" aria-label="Settings" data-tooltip="Settings">
+          <svg class="icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+        <button class="btn btn-ghost btn-icon theme-toggle" id="themeToggle" aria-label="Toggle theme" data-tooltip="Toggle Theme">
+          <svg class="icon icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2 class="sidebar-title">Notes</h2>
+          <button class="btn btn-ghost btn-icon btn-sm" id="newNote" aria-label="New note">
+            <svg class="icon" viewBox="0 0 24 24">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="sidebar-tabs">
+          <button class="sidebar-tab active" data-tab="notes">Notes</button>
+          <button class="sidebar-tab" data-tab="folders">Folders</button>
+          <button class="sidebar-tab" data-tab="tags">Tags</button>
+        </div>
+        
+        <div class="sidebar-content">
+          <!-- Notes List -->
+          <div class="notes-list" id="notesList" data-tab-content="notes">
+            <div class="empty-state" id="emptyNotes">
+              <p>No notes yet</p>
+              <button class="btn btn-sm" id="createFirstNote">Create your first note</button>
+            </div>
+          </div>
+          
+          <!-- Folders List -->
+          <div class="folders-list hidden" id="foldersList" data-tab-content="folders">
+            <div class="empty-state">
+              <p>Open a folder to see its structure</p>
+            </div>
+          </div>
+          
+          <!-- Tags List -->
+          <div class="tags-list hidden" id="tagsList" data-tab-content="tags">
+            <div class="empty-state" id="emptyTags">
+              <p>No tags yet</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Editor Area -->
+      <main class="editor-area" id="editorArea">
+        <!-- Editor Header -->
+        <div class="editor-header">
+          <input 
+            type="text" 
+            class="note-title-input" 
+            id="noteTitle" 
+            placeholder="Untitled"
+            aria-label="Note title"
+          >
+          <div class="editor-actions">
+            <button class="btn btn-ghost btn-icon btn-sm" id="togglePreview" aria-label="Toggle preview" data-tooltip="Toggle Preview">
+              <svg class="icon icon-preview" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+            <button class="btn btn-ghost btn-icon btn-sm" id="toggleLocalGraph" aria-label="Toggle local graph" data-tooltip="Local Graph">
+              <svg class="icon" viewBox="0 0 24 24">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="18" r="3"></circle>
+                <line x1="6" y1="9" x2="6" y2="15"></line>
+                <line x1="9" y1="6" x2="15" y2="18"></line>
+                <line x1="9" y1="18" x2="15" y2="18"></line>
+              </svg>
+            </button>
+            <button class="btn btn-ghost btn-icon btn-sm" id="deleteNote" aria-label="Delete note" data-tooltip="Delete">
+              <svg class="icon" viewBox="0 0 24 24">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Editor Container -->
+        <div class="editor-container">
+          <div class="editor-pane" id="editorPane">
+            <textarea 
+              class="editor-textarea" 
+              id="editor" 
+              placeholder="Start writing..."
+              spellcheck="false"
+            ></textarea>
+          </div>
+          
+          <div class="preview-pane hidden" id="previewPane">
+            <div class="preview-content" id="preview"></div>
+          </div>
+        </div>
+
+        <!-- Local Graph Panel -->
+        <div class="local-graph-panel hidden" id="localGraphPanel">
+          <div class="panel-header">
+            <h3>Local Graph</h3>
+            <button class="btn btn-ghost btn-icon btn-sm" id="closeLocalGraph" aria-label="Close">
+              <svg class="icon" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="graph-container" id="localGraph"></div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="editor-empty-state" id="editorEmptyState">
+          <div class="empty-state-content">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" style="width: 48px; height: 48px; opacity: 0.3;">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <p>Select a note or create a new one</p>
+            <button class="btn" id="emptyNewNote">
+              <svg class="icon" viewBox="0 0 24 24">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              New Note
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Global Graph Modal -->
+    <div class="modal hidden" id="globalGraphModal">
+      <div class="modal-backdrop" id="globalGraphBackdrop"></div>
+      <div class="modal-content modal-full">
+        <div class="modal-header">
+          <h2>Global Graph</h2>
+          <div class="modal-actions">
+            <div class="graph-controls">
+              <input 
+                type="text" 
+                class="input input-sm" 
+                id="graphSearch" 
+                placeholder="Search nodes..."
+              >
+              <label class="checkbox-label">
+                <input type="checkbox" id="showOrphans" checked>
+                <span>Show orphans</span>
+              </label>
+            </div>
+            <button class="btn btn-ghost btn-icon" id="closeGlobalGraph" aria-label="Close">
+              <svg class="icon" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="graph-container graph-full" id="globalGraph"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal hidden" id="settingsModal">
+      <div class="modal-backdrop" id="settingsBackdrop"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <button class="btn btn-ghost btn-icon" id="closeSettings" aria-label="Close">
+            <svg class="icon" viewBox="0 0 24 24">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-section">
+            <h3>Appearance</h3>
+            <div class="setting-item">
+              <label for="themeSelect">Theme</label>
+              <select class="input" id="themeSelect">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="system">System</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="settings-section">
+            <h3>Editor</h3>
+            <div class="setting-item">
+              <label for="editorFont">Editor Font</label>
+              <select class="input" id="editorFont">
+                <option value="JetBrains Mono">JetBrains Mono</option>
+                <option value="Fira Code">Fira Code</option>
+                <option value="Source Code Pro">Source Code Pro</option>
+                <option value="Consolas">Consolas</option>
+                <option value="Monaco">Monaco</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <label for="fontSize">Font Size: <span id="fontSizeValue">15</span>px</label>
+              <input type="range" class="range-input" id="fontSize" min="12" max="24" value="15">
+            </div>
+            <div class="setting-item">
+              <label for="lineHeight">Line Height: <span id="lineHeightValue">1.6</span></label>
+              <input type="range" class="range-input" id="lineHeight" min="1.4" max="2.0" step="0.1" value="1.6">
+            </div>
+          </div>
+          
+          <div class="settings-section">
+            <h3>Preview</h3>
+            <div class="setting-item">
+              <label for="previewFont">Preview Font</label>
+              <select class="input" id="previewFont">
+                <option value="Inter">Inter</option>
+                <option value="Work Sans">Work Sans</option>
+                <option value="Merriweather">Merriweather</option>
+                <option value="Lora">Lora</option>
+                <option value="Georgia">Georgia</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="settings-section">
+            <h3>Graph</h3>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="graphPhysics" checked>
+                <span>Enable physics simulation</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="settings-section">
+            <h3>Data</h3>
+            <div class="setting-item">
+              <button class="btn" id="exportData">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Export All Notes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal hidden" id="deleteModal">
+      <div class="modal-backdrop" id="deleteBackdrop"></div>
+      <div class="modal-content modal-sm">
+        <div class="modal-header">
+          <h2>Delete Note</h2>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete "<span id="deleteNoteName"></span>"?</p>
+          <p class="text-muted">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" id="cancelDelete">Cancel</button>
+          <button class="btn btn-primary" id="confirmDelete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../src/main.js"></script>
+</body>
+</html>
